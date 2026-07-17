@@ -6,6 +6,8 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Platforms](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)
 
+![Whole Task Control for Codex](assets/social-preview.png)
+
 **Keep long-running Codex tasks aligned—even after context compaction, corrections, resumed sessions, and multi-agent work.**
 
 Whole Task Control is an open-source skill for OpenAI Codex. It prevents task drift by reconstructing the whole task, preserving confirmed decisions, reconciling real progress, and applying new instructions only to the parts they actually change.
