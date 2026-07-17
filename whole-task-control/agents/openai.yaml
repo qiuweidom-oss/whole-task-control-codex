@@ -1,0 +1,7 @@
+interface:
+  display_name: "Whole Task Control"
+  short_description: "Keeps complex root-agent work aligned across context"
+  default_prompt: "Use $whole-task-control when this task depends on prior decisions, progress, corrections, or multiple coordinated steps."
+
+policy:
+  allow_implicit_invocation: true

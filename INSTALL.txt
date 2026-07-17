@@ -1,0 +1,51 @@
+Whole Task Control V2.1.1 · Codex 安装说明
+
+这是什么
+
+这是一个独立的 Codex 主代理工作方法。它只在任务依赖多轮上下文、历史决定、真实进度、纠正、接班恢复、多个相互依赖步骤或子代理汇总时唤醒；自包含、低风险、单步的小任务不会唤醒。子代理不会加载它。
+
+它不依赖、不调用、不修改任何其他技能体系。它只修改 Codex 目录，不读取或修改 Claude Code。
+
+macOS / Linux
+
+1. 先预览，不改文件：
+   sh install.sh --dry-run
+2. 安装：
+   sh install.sh
+3. 如果已存在自己创建的同名技能，确认替换并自动备份：
+   sh install.sh --replace
+
+Windows PowerShell
+
+1. 解压后在该目录打开 PowerShell。
+2. 先预览，不改文件：
+   .\install.ps1 -DryRun
+3. 安装：
+   .\install.ps1
+4. 如果已存在自己创建的同名技能，确认替换并自动备份：
+   .\install.ps1 -Replace
+
+如果系统阻止运行本地脚本，可以只为当前 PowerShell 窗口临时放行：
+   Set-ExecutionPolicy -Scope Process Bypass
+
+卸载与恢复
+
+- macOS / Linux 卸载：sh uninstall.sh
+- macOS / Linux 预览卸载：sh uninstall.sh --dry-run
+- macOS / Linux 恢复最近一次操作前状态：sh restore.sh
+- Windows 卸载：.\uninstall.ps1
+- Windows 预览卸载：.\uninstall.ps1 -DryRun
+- Windows 恢复最近一次操作前状态：.\restore.ps1
+- Windows 预览恢复：.\restore.ps1 -DryRun
+
+安装器行为
+
+- 改动 $CODEX_HOME（未设置时为 ~/.codex）中的 skills/whole-task-control 和 AGENTS.md。
+- 安装前先检查规则标记和同名技能；检查失败时不复制技能。
+- 每次真实安装、卸载或恢复前都会保存带时间的完整备份。
+- 首次安装时，如果已有 AGENTS.md，会额外保留 AGENTS.md.before-whole-task-control。
+- 重复安装不会重复添加规则块。
+- Windows 安装器会在改文件前检查路径长度；自定义 CODEX_HOME 过深时会明确停止，请改用较短路径。
+- Windows 原生测试：powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\test_install.ps1
+- macOS / Linux / Git Bash 测试：sh tests/test_install.sh
+- 安装完成后，新建 Codex 任务或重启 Codex 使全局规则稳定生效。
